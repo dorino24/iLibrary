@@ -22,6 +22,10 @@
                         </div>
                         <input type="submit" name="login" class="btn btn-danger" value="login" />
                     </form>
+                    <div>
+                        <p>Not Registered Yet??</p>
+                        <a href="register">Register NOWW!!</a>
+                    </div>
                     @error('username')
                         <div class='alert alert-danger'>{{ $message }}</div>
                     @enderror

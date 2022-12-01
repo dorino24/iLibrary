@@ -30,6 +30,9 @@ Route::get('/', function () {
 Route::get('/login', function () {
     return view('login');
 })->middleware('guest');
+Route::get('/register', function () {
+    return view('register');
+})->middleware('guest');
 
 Route::post('/login', [LoginController::class, 'login'])->name('login');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
