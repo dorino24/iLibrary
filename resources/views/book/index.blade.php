@@ -5,7 +5,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-5">
-                        <h2 class="admin-heading">{{ $titleH1 }}</h2>
+                        <h2 class="admin-heading">{{ $title }}</h2>
                     </div>
                 </div>
                 <div class="row justify-content-center">

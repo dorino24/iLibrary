@@ -92,10 +92,11 @@ class UserController extends Controller
     }
     //Store image
     public function storeImage(Request $request,$id){
-      dd($request);
+      
         $data = User::find($id); 
         if($request->file('image')){
-            $file= $request->file('image'); 
+            $file= $request->file('image');
+                 
             $data->image= $file->store('ProfilePic');
         }
 

@@ -21,7 +21,7 @@ class BorrowController extends Controller
         return view('/borrow/index',[
             'books'=>book::all(),
             'borrows'=>borrow::where('user_id',auth()->user()->id)->filter(request(['search']))->Paginate(5)->withQueryString(),
-            'title' => 'Book Borrow List '
+            'time' => new Carbon()
         ]);
     }
     public function indexAdmin()
@@ -30,8 +30,7 @@ class BorrowController extends Controller
         return view('/borrow/indexAdmin',[
             'books'=>book::all(),
             'users'=>User::all(),
-            'borrows'=>borrow::latest()->filter(request(['search']))->Paginate(5)->withQueryString(),
-            'title' => 'Book Borrow List '
+            'borrows'=>borrow::latest()->filter(request(['search']))->Paginate(5)->withQueryString()
         ]);
         } else {
             return view('disallow');

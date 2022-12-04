@@ -19,7 +19,6 @@ class dashboardController extends Controller
             'authors' => auther::count(),
             'publishers' => publisher::count(),
             'books' => book::count(),
-            'title' => 'Dashboard'
         ]);
     }
     public function indexAdmin()
@@ -28,7 +27,7 @@ class dashboardController extends Controller
             return view('admin/dashboardAdmin', [
                 'authors' => auther::count(),
                 'publishers' => publisher::count(),
-                'title' => 'Dashboard',
+
                 'books' => book::count(),
 
             ]);

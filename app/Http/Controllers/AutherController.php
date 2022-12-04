@@ -18,7 +18,6 @@ class AutherController extends Controller
         
             return view('auther.index', [
                 'authors' => auther::latest()->filter(request(['search']))->Paginate(5)->withQueryString(),
-                'title' => 'Authers'
             ]);
        
     }
@@ -26,8 +25,7 @@ class AutherController extends Controller
     {
         if(auth()->user()->role == "0"){
             return view('auther.indexAdmin', [ 'authors' => auther::latest()->filter(request(['search']))->Paginate(5)->withQueryString(),
-            'title' => 'Authers'   
-        ]);}
+            ]);}
 
             else{
                 return view('disallow');

@@ -18,14 +18,12 @@ class PublisherController extends Controller
         
         return view('publisher.index', [
             'publishers' => publisher::latest()->filter(request(['search']))->Paginate(5)->withQueryString(),
-            'title' => 'Publisher List'
         ]);
     }
     public function indexAdmin()
     {
         if(auth()->user()->role == "0"){
             return view('publisher.indexAdmin', [
-                'title' => 'Publisher List',
                 'publishers' => publisher::latest()->filter(request(['search']))->Paginate(5)->withQueryString(),
             ]);
             }else{

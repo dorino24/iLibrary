@@ -32,8 +32,7 @@ class BookController extends Controller
         }
        
             return view('book.index', [
-                'title' =>'Book List',
-                'titleH1' => "All Post" . $title,
+                'title' => "All Post" . $title,
                 'books' => book::latest()->filter(request(['search', 'auther', 'publisher']))->Paginate(5)->withQueryString()
             ]);
        
@@ -52,8 +51,7 @@ class BookController extends Controller
         }
         if (auth()->user()->role == "0") {
             return view('book.indexAdmin', [
-                'title' => 'Book List',
-                'titleH1' => "All Post" . $title,
+                'title' => "All Post" . $title,
                 'books' => book::latest()->filter(request(['search', 'auther', 'publisher']))->Paginate(5)->withQueryString(),
                 'statuses'=>status::latest()->get()
             ]);
