@@ -29,8 +29,10 @@
                             {{-- <th>Publisher</th> --}}
                             <th>Status</th>
                             <th>Action</th>
+                            <th>Back At</th>
                         </thead>
                         <tbody>
+
                             @forelse ($borrows as $borrow)
                                 <tr class="tr-shadow">
                                     {{-- <td>{{ $borrow->id }}</td> --}}
@@ -39,7 +41,7 @@
                                     {{-- <td>{{ $borrow->category->name }}</td> --}}
                                     <td>{{ $borrow->book->name }}</td>
                                     <td>
-                                        @if($borrow->book->status_id == 3)
+                                        @if ($borrow->book->status_id == 3)
                                             -
                                         @else
                                             {{ $borrow->book->updated_at->format('d/m/y') }}
@@ -59,15 +61,22 @@
                                             @if ($borrow->book->status_id == 3)
                                                 <div class="mx-3">
                                                     <form action="{{ route('borrow.update', $borrow) }}" method="post"
-                                                    class="form-hidden" id="return">
-                                                    @csrf
-                                                    <button class="item" data-toggle="tooltip" data-placement="top"
-                                                        title="Cencel"><i class="fas fa-times"></i></button>
-                                                </form>
+                                                        class="form-hidden" id="return">
+                                                        @csrf
+                                                        <button class="item" data-toggle="tooltip" data-placement="top"
+                                                            title="Cencel"><i class="fas fa-times"></i></button>
+                                                    </form>
                                                 </div>
                                             @endif
-                                            
+
                                         </div>
+                                    </td>
+                                    <td>
+                                        @if ($borrow->book->status_id != 3)
+                                            {{ $kembali[$borrows->count() * ($borrows->currentPage() - 1) + $loop->iteration] }}
+                                        @else
+                                            -
+                                        @endif
                                     </td>
                                 </tr>
                             @empty
@@ -86,5 +95,3 @@
 
     </div>
 @endsection
-
-

@@ -18,10 +18,21 @@ class BorrowController extends Controller
      */
     public function index()
     {
+        $borrows = borrow::all();
+        // dd($borrows);
+        $kembali[] ='';
+        $i = 0;
+        foreach ($borrows as $borrow) {
+            $kembali[$i] =  Carbon::create($borrow->updated_at)->addDays(5)->format('d/m/Y');
+            $i++;
+        }
+        $satu[]='1';
         return view('/borrow/index',[
             'books'=>book::all(),
             'borrows'=>borrow::where('user_id',auth()->user()->id)->filter(request(['search']))->Paginate(5)->withQueryString(),
-            'time' => new Carbon()
+            'kembali' => $kembali,
+            'satu'=> $satu
+            // 'kembali' =>$DL_time,
         ]);
     }
     public function indexAdmin()
